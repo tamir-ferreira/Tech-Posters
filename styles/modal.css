@@ -13,10 +13,11 @@
     /* retirar */
     display: none;
     font-family: var(--font-family-2);
+    animation: animateModal 1s ease-in-out;
 }
 
 .show-modal {
-    animation: animateModal 1s ease-in-out;
+    /* animation: animateModal 1s ease-in-out; */
     display: flex;
 }
 
@@ -70,12 +71,14 @@
     0% {
         opacity: 0;
         transform: scale(0%);
+        background-color: rgba(0, 0, 0, 0);
     }
-
-    50% {
-        transform: scale(150%)
+    25%{
+        rotate: 180deg;
     }
-
+    90%{
+        background-color: rgba(0, 0, 0, 0);
+    }
     100% {
         opacity: 1;
         transform: scale(100%);

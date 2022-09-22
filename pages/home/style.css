@@ -57,14 +57,14 @@
     /* margin-top: 52px; */
     display: flex;
     flex-direction: column;
-    gap: 52px;
+    gap: 70px;
 }
 
 .post article {
     /* border: 1px solid red; */
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 25px;
 }
 
 .post .container-heart {
@@ -83,6 +83,7 @@
     color: white;
     background-color: var(--color-grey-1);
     border-radius: 4px;
+    border: none;
 }
 
 .post article button:hover {
