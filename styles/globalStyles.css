@@ -7,9 +7,18 @@
 }
 
 :root{
+    --brand-1: #4263EB;
+    --brand-2: #364FC7;
+    --color-grey-0: #0A0C0D;
     --color-grey-1: #212529;
     --color-grey-2: #495057;
+    --color-grey-3: #868E96;
+    --color-grey-4: #DEE2E6;
+    --color-grey-5: #F8F9FA;
+    --grey-opacity-1: rgba(33, 37, 41, 0.5);
     --color-white-fixed: #ffffff;
+    --color-like: #D7443E;
+
     --radius-1: 0.25rem;
     --font-family-1: "Inter", sans-serif;
 }

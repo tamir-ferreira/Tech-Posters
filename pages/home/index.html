@@ -1,19 +1,126 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/styles/globalStyles.css" />
-    <link rel="stylesheet" href="style.css" />
-    <title>TechPosters - Home</title>
-  </head>
-  <body>
-    <header></header>
-    <main></main>
-  </body>
-  <script src="/script/database/users.js"></script>
-  <script src="/script/database/posts.js"></script>
-  <script src="/script/database/sugestUsers.js"></script>
-  <script src="index.js"></script>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/styles/globalStyles.css" />
+  <link rel="stylesheet" href="/styles/navbar.css" />
+  <link rel="stylesheet" href="style.css" />
+  <title>TechPosters - Home</title>
+</head>
+
+<body>
+  <header class="navbar ">
+    <nav class="container navbar-items">
+      <h1>TechPosters</h1>
+      <ul class="navbar-links">
+        <a class="navbar-link" href="">Sair</a>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section>
+      <form action="">
+        <div>
+          <img src="../../assets/img/user1.svg" alt="foto de perfil">
+          <div>
+            <h3>Samuel Leão</h3>
+            <small>Front end Engineer</small>
+          </div>
+        </div>
+        <input type="text" placeholder="Digitar título do post">
+        <textarea name="" id="" cols="30" rows="10" placeholder="Digitar descrição do post"></textarea>
+        <button>Postar</button>
+      </form>
+    </section>
+    <section>
+      <h2>Posts</h2>
+      <ul>
+        <li>
+          <article>
+            <div>
+              <img src="../../assets/img/user2.svg" alt="foto de perfil">
+              <div>
+                <h3>Samuel Persuhn</h3>
+                <small>Front end Engineer</small>
+              </div>
+            </div>
+            <h2>Empresa de Tecnologia da Informação abre vagas para programa de estágio</h2>
+            <p>A Generic Digital, empresa natalence especializada em Tecnologia da Informação, irá iniciar o seu sexto
+              programa de estágio, com o prazo de inscrições entre os dias 10 e 28 de agosto.</p>
+            <div>
+              <button>Abrir Post</button>
+              <img src="../../assets/img/heart.svg" alt="coração">
+              <small>25</small>
+            </div>
+          </article>
+        </li>
+        <li>
+          <article>
+            <div>
+              <img src="../../assets/img/user5.svg" alt="foto de perfil">
+              <div>
+                <h3>Carla Maria</h3>
+                <small>Back end Engineer</small>
+              </div>
+            </div>
+            <h2>Como melhorar sua lógica de programação? Desenvolvemos 5 passos para te ajudar</h2>
+            <p>Para quem está começando na área de T.I, em pleno século 21 este conceito pode parecer um grande desafio,
+              pois requer muitas habilidades em diversas áreas de estudo, principalmente...</p>
+            <div>
+              <button>Abrir Post</button>
+              <img src="../../assets/img/heart-pb.svg" alt="coração">
+              <small>19</small>
+            </div>
+          </article>
+        </li>
+      </ul>
+    </section>
+  </main>
+  <aside>
+    <h3>Sugestões para você seguir</h3>
+    <div>
+      <img src="../../assets/img/user3.svg" alt="foto de perfil">
+      <div>
+        <h3>Carlos Lima</h3>
+        <small>UX e UI Desginer</small>
+      </div>
+      <button>Seguindo</button>
+    </div>
+    <div>
+      <img src="../../assets/img/user4.svg" alt="foto de perfil">
+      <div>
+        <h3>Larissa Camargo</h3>
+        <small>UI Developer</small>
+      </div>
+      <button>Seguir</button>
+    </div>
+  </aside>
+  <div class="modal-container" hidden>
+    <div class="modal">
+      <div class="modal-header">
+        <div>
+          <img src="../../assets/img/user6.svg" alt="foto de perfil">
+          <div>
+            <h3>Júlia Martins</h3>
+            <small>Devop's</small>
+          </div>
+        </div>
+        <button>X</button>
+      </div>
+      <div class="modal-description">
+        <h2>Como melhorar sua lógica de programação? Desenvolvemos 5 passos para te ajudar</h2>
+        <p>Provavelmente, você já ouviu falar do Next.js, considerado o framework mais popular do mercado. Com a expansão do mercado de tecnologia e sua influência em serviços de diversos segmentos</p>
+        <p>Para tornar o carregamento de páginas mais rápido, o Next.js quebra o código automaticamente e é assim que assegura uma capacidade de carregamento de página mais rápida, já que os sites são criados para suportar um grande volume de acessos.</p>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="/script/database/users.js"></script>
+<script src="/script/database/posts.js"></script>
+<script src="/script/database/sugestUsers.js"></script>
+<script src="index.js"></script>
+
 </html>
