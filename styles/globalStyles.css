@@ -50,6 +50,7 @@ input:focus, textarea:focus{
 
 button{
     cursor: pointer;
+    /* border: none; */
 }
 
 h2,h3{

@@ -116,6 +116,9 @@ aside>h3 {
     padding: 5.5px 12px;
     border-radius: 2px;
     font-weight: 600px;
+    border-style: solid;
+    border-width: 1px;
+    background-color: white
 }
 
 .list-suggestions button:hover {
@@ -124,15 +127,9 @@ aside>h3 {
     border: 1px solid var(--brand-1);
 }
 
-.btn-pressed,
-.list-suggestions button:focus {
+.list-suggestions .btn-pressed {
+    /* .list-suggestions button:focus { */
     background-color: var(--brand-1);
     color: var(--color-white-fixed);
     border: 1px solid var(--brand-1);
-}
-
-.btn-no-pressed {
-    background-color: var(--color-white-fixed);
-    color: var(--color-grey-1);
-    border: 1px solid var(--color-grey-1);
 }
