@@ -1,0 +1,38 @@
+.section-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    min-width: 200px;
+    width: 650px;
+}
+
+.section-form form input {
+    font-size: 16px;
+    height: 52px;
+    padding-left: 21px;
+    width: 100%;
+}
+
+.section-form form textarea {
+    font-size: 16px;
+    height: 130px;
+    padding: 28px 21px;
+    width: 100%;
+}
+
+input,
+textarea {
+    border-radius: var(--radius-1);
+    border: 1px solid var(--color-grey-4);
+    font-family: var(--font-family-1);
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--color-grey-3);
+}
+
+input:focus,
+textarea:focus {
+    outline: 1px solid var(--brand-1);
+}

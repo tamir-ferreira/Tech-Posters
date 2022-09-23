@@ -1,0 +1,57 @@
+button {
+    cursor: pointer;
+}
+
+.section-form button {
+    padding: 10.5px 12px;
+    width: fit-content;
+    font-size: 14px;
+    color: var(--color-grey-3);
+    background-color: var(--color-grey-4);
+    border: none;
+    align-self: flex-end;
+    border-radius: var(--radius-1);
+}
+
+.section-form button:hover {
+    background-color: var(--brand-1);
+    color: var(--color-white-fixed);
+}
+
+.list-suggestions button {
+    align-self: baseline;
+    margin-left: auto;
+    padding: 5.5px 12px;
+    border-radius: 2px;
+    font-weight: 600px;
+    border-style: solid;
+    border-width: 1px;
+    background-color: var(--color-white-fixed);
+}
+
+.list-suggestions button:hover {
+    background-color: var(--color-grey-5);
+    color: var(--brand-1);
+    border: 1px solid var(--brand-1);
+}
+
+.list-suggestions .btn-pressed,
+.list-suggestions .btn-pressed:focus {
+    background-color: var(--brand-1);
+    color: var(--color-white-fixed);
+    border: 1px solid var(--brand-1);
+}
+
+.post article button {
+    padding: 10.5px 12px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-white-fixed);
+    background-color: var(--color-grey-1);
+    border-radius: var(--radius-1);
+    border: none;
+}
+
+.post article button:hover {
+    background-color: var(--color-grey-0);
+}

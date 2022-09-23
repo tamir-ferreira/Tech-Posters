@@ -1,36 +1,30 @@
 .container-modal {
     align-items: center;
+    animation: animateModal 1s ease-in-out;
     background-color: rgba(0, 0, 0, 0.75);
-    height: 100vh;
-    /* justify-content: center; */
-    padding-top: 100px;
+    display: none;
     flex-direction: column;
+    font-family: var(--font-family-2);
+    height: 100vh;
     left: 0;
+    padding-top: 100px;
     position: fixed;
     top: 0;
     width: 100vw;
-    display: flex;
-    /* retirar */
-    display: none;
-    font-family: var(--font-family-2);
-    animation: animateModal 1s ease-in-out;
 }
 
 .show-modal {
-    /* animation: animateModal 1s ease-in-out; */
     display: flex;
 }
 
 .modal {
     background-color: var(--color-white-fixed);
     border-radius: 8px;
+    box-shadow: 5px 5px 10px var(--color-grey-1);
     display: flex;
     flex-direction: column;
-    /* height: 284px; */
-    width: 761px;
-    box-shadow: 5px 5px 10px var(--color-grey-1);
-    /* padding: 24px; */
     gap: 32px;
+    width: 720px;
 }
 
 .modal-header {
@@ -42,16 +36,17 @@
 
 .modal-header>.user-info {
     margin: 40px 24px;
+    width: 100%;
 }
 
 .modal-header button {
-    color: var(--color-grey-3);
     background: none;
     border: none;
-    width: 40px;
+    color: var(--color-grey-3);
+    font-size: 28px;
     height: 40px;
     margin: 11px 15px;
-    font-size: 28px;
+    width: 40px;
 }
 
 .modal-header button:hover {
@@ -59,19 +54,18 @@
 }
 
 .modal-description{
-    
-    padding: 32px 24px;
     display: flex;
     flex-direction: column;
     gap: 24px;
+    padding: 32px 24px;
 }
 
 
 @keyframes animateModal {
     0% {
+        background-color: rgba(0, 0, 0, 0);
         opacity: 0;
         transform: scale(0%);
-        background-color: rgba(0, 0, 0, 0);
     }
     25%{
         rotate: 180deg;

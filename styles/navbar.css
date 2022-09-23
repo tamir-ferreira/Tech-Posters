@@ -1,16 +1,18 @@
 .navbar {
-    color: var(--color-white-fixed);
     background-color: var(--color-grey-1);
+    color: var(--color-white-fixed);
+    left: 0;
     padding: 1.5rem 0;
     position: fixed;
-    left: 0;
     top: 0;
     width: 100%;
+    z-index: 10;
 }
 
 .navbar-items {
     display: flex;
     justify-content: space-between;
+    width: 100%;
 }
 
 .navbar-links {
@@ -20,14 +22,13 @@
 
 .navbar-link {
     background-color: transparent;
-    color: var(--color-white-fixed);
-    height: 2rem;
-    padding: 0.5rem;
     border-radius: var(--radius-1);
-    text-decoration: none;
+    color: var(--color-white-fixed);
     font-size: 0.875rem;
     font-weight: 400;
-    /* cursor: pointer; */
+    height: 2rem;
+    padding: 0.5rem;
+    text-decoration: none;
 }
 
 .navbar-link:hover,

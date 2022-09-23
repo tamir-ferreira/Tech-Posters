@@ -5,10 +5,17 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="/styles/globalStyles.css" />
-  <link rel="stylesheet" href="/styles/navbar.css" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="/styles/navbar.css" />
   <link rel="stylesheet" href="/styles/modal.css" />
+  <link rel="stylesheet" href="/styles/globalStyles.css" />
+  <link rel="stylesheet" href="/styles/buttons.css" />
+  <link rel="stylesheet" href="/styles/inputs.css" />
+  <link rel="stylesheet" href="/styles/mobile.css" />
+  <script defer src="/script/database/users.js"></script>
+  <script defer src="/script/database/posts.js"></script>
+  <script defer src="/script/database/sugestUsers.js"></script>
+  <script defer src="index.js"></script>
   <title>TechPosters - Home</title>
 </head>
 
@@ -23,20 +30,57 @@
   </header>
   <main class="container-main">
     <div class="container-sections">
-      <section class="section-form">
-        <form action="">
-          <div class="user-info">
-            <img src="../../assets/img/user1.svg" alt="foto de perfil">
-            <div>
-              <h3>Samuel Leão</h3>
-              <small>Front end Engineer</small>
+      <div class="container-up">
+        <section class="section-form">
+          <form>
+            <div class="user-info">
+              <img src="../../assets/img/user1.svg" alt="foto de perfil">
+              <div>
+                <h3>Samuel Leão</h3>
+                <span>Front end Engineer</span>
+              </div>
             </div>
-          </div>
-          <input type="text" placeholder="Digitar título do post">
-          <textarea name="" id="" placeholder="Digitar descrição do post"></textarea>
-          <button>Postar</button>
-        </form>
-      </section>
+            <input type="text" placeholder="Digitar título do post">
+            <textarea name="" id="" placeholder="Digitar descrição do post"></textarea>
+            <button>Postar</button>
+          </form>
+        </section>
+        <aside>
+          <h3>Sugestões para você seguir</h3>
+          <ul class="list-suggestions">
+            <li>
+              <div class="user-info">
+                <img src="../../assets/img/user3.svg" alt="foto de perfil">
+                <div>
+                  <h3>Carlos Lima</h3>
+                  <span>UX e UI Desginer</span>
+                </div>
+                <button data-control-follow="follow-1">Seguir</button>
+              </div>
+            </li>
+            <li>
+              <div class="user-info">
+                <img src="../../assets/img/user6.svg" alt="foto de perfil">
+                <div>
+                  <h3>Larissa Camargo</h3>
+                  <span>UI Developer</span>
+                </div>
+                <button data-control-follow="follow-2">Seguir</button>
+              </div>
+            </li>
+            <li>
+              <div class="user-info">
+                <img src="../../assets/img/user7.svg" alt="foto de perfil">
+                <div>
+                  <h3>Filipe Gutierry</h3>
+                  <span>Full Stack Developer</span>
+                </div>
+                <button data-control-follow="follow-3">Seguir</button>
+              </div>
+            </li>
+          </ul>
+        </aside>
+      </div>
       <section class="section-posts">
         <h2>Posts</h2>
         <ul class="list-posts">
@@ -46,7 +90,7 @@
                 <img src="../../assets/img/user2.svg" alt="foto de perfil">
                 <div>
                   <h3>Samuel Persuhn</h3>
-                  <small>Front end Engineer</small>
+                  <span>Front end Engineer</span>
                 </div>
               </div>
               <h2>Empresa de Tecnologia da Informação abre vagas para programa de estágio</h2>
@@ -55,18 +99,17 @@
               <div class="container-heart">
                 <button data-control-modal="post-1">Abrir Post</button>
                 <img data-control-like="like-1" src="../../assets/img/heart-pb.svg" alt="coração">
-                <small>0</small>
+                <span>15</span>
               </div>
             </article>
           </li>
-
           <li class="post">
             <article>
               <div class="user-info">
                 <img src="../../assets/img/user4.svg" alt="foto de perfil">
                 <div>
                   <h3>Carla Maria</h3>
-                  <small>Back end Engineer</small>
+                  <span>Back end Engineer</span>
                 </div>
               </div>
               <h2>Como melhorar sua lógica de programação? Desenvolvemos 5 passos para te ajudar</h2>
@@ -75,18 +118,17 @@
               <div class="container-heart">
                 <button data-control-modal="post-2">Abrir Post</button>
                 <img data-control-like="like-2" src="../../assets/img/heart-pb.svg" alt="coração">
-                <small>0</small>
+                <span>35</span>
               </div>
             </article>
           </li>
-
           <li class="post">
             <article>
               <div class="user-info">
                 <img src="../../assets/img/user6.svg" alt="foto de perfil">
                 <div>
                   <h3>Júlia Martins</h3>
-                  <small>Devop's</small>
+                  <span>Devop's</span>
                 </div>
               </div>
               <h2>"Programa de estágio abre vagas em Segurança da Informação com regime remoto"</h2>
@@ -95,53 +137,13 @@
               <div class="container-heart">
                 <button data-control-modal="post-3">Abrir Post</button>
                 <img data-control-like="like-3" src="../../assets/img/heart-pb.svg" alt="coração">
-                <small>0</small>
+                <span>20</span>
               </div>
             </article>
           </li>
         </ul>
-
       </section>
     </div>
-    <aside>
-      <h3>Sugestões para você seguir</h3>
-
-      <ul class="list-suggestions">
-        <li>
-          <div class="user-info">
-            <img src="../../assets/img/user3.svg" alt="foto de perfil">
-            <div>
-              <h3>Carlos Lima</h3>
-              <small>UX e UI Desginer</small>
-            </div>
-            <button data-control-follow="follow-1">Seguir</button>
-          </div>
-        </li>
-
-        <li>
-          <div class="user-info">
-            <img src="../../assets/img/user6.svg" alt="foto de perfil">
-            <div>
-              <h3>Larissa Camargo</h3>
-              <small>UI Developer</small>
-            </div>
-            <button data-control-follow="follow-2">Seguir</button>
-          </div>
-        </li>
-
-        <li>
-          <div class="user-info">
-            <img src="../../assets/img/user7.svg" alt="foto de perfil">
-            <div>
-              <h3>Filipe Gutierry</h3>
-              <small>Full Stack Developer</small>
-            </div>
-            <button data-control-follow="follow-3">Seguir</button>
-          </div>
-        </li>
-      </ul>
-
-    </aside>
   </main>
 
   <div class="container-modal" id="post-1">
@@ -151,7 +153,7 @@
           <img src="../../assets/img/user2.svg" alt="foto de perfil">
           <div>
             <h3>Samuel Persuhn</h3>
-            <small>Front end Engineer</small>
+            <span>Front end Engineer</span>
           </div>
         </div>
         <button data-control-modal="post-1">x</button>
@@ -166,7 +168,6 @@
       </div>
     </div>
   </div>
-
   <div class="container-modal" id="post-2">
     <div class="modal">
       <div class="modal-header">
@@ -174,7 +175,7 @@
           <img src="../../assets/img/user4.svg" alt="foto de perfil">
           <div>
             <h3>Carla Maria</h3>
-            <small>Back end Engineer</small>
+            <span>Back end Engineer</span>
           </div>
         </div>
         <button data-control-modal="post-2">x</button>
@@ -197,7 +198,7 @@
           <img src="../../assets/img/user6.svg" alt="foto de perfil">
           <div>
             <h3>Júlia Martins</h3>
-            <small>Devop's</small>
+            <span>Devop's</span>
           </div>
         </div>
         <button data-control-modal="post-3">x</button>
@@ -213,9 +214,5 @@
     </div>
   </div>
 </body>
-<script src="/script/database/users.js"></script>
-<script src="/script/database/posts.js"></script>
-<script src="/script/database/sugestUsers.js"></script>
-<script src="index.js"></script>
 
 </html>
