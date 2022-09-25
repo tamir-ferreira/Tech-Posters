@@ -40,9 +40,9 @@
                 <span>Front end Engineer</span>
               </div>
             </div>
-            <input type="text" placeholder="Digitar título do post">
-            <textarea name="" id="" placeholder="Digitar descrição do post"></textarea>
-            <button>Postar</button>
+            <input id="title-post" type="text" placeholder="Digitar título do post">
+            <textarea id="message-post" placeholder="Digitar descrição do post"></textarea>
+            <button type="button" id="button-post">Postar</button>
           </form>
         </section>
         <aside>
@@ -146,7 +146,7 @@
     </div>
   </main>
 
-  <div class="container-modal" id="post-1">
+  <div class="container-modal" id="modal-1">
     <div class="modal">
       <div class="modal-header">
         <div class="user-info">
@@ -156,7 +156,7 @@
             <span>Front end Engineer</span>
           </div>
         </div>
-        <button data-control-modal="post-1">x</button>
+        <button data-close-modal="modal-1">x</button>
       </div>
       <div class="modal-description">
         <h2>Empresa de Tecnologia da Informação abre vagas para programa de estágio</h2>
@@ -168,7 +168,7 @@
       </div>
     </div>
   </div>
-  <div class="container-modal" id="post-2">
+  <div class="container-modal" id="modal-2">
     <div class="modal">
       <div class="modal-header">
         <div class="user-info">
@@ -178,7 +178,7 @@
             <span>Back end Engineer</span>
           </div>
         </div>
-        <button data-control-modal="post-2">x</button>
+        <button data-close-modal="modal-2">x</button>
       </div>
       <div class="modal-description">
         <h2>Como melhorar sua lógica de programação? Desenvolvemos 5 passos para te ajudar</h2>
@@ -191,7 +191,7 @@
       </div>
     </div>
   </div>
-  <div class="container-modal" id="post-3">
+  <div class="container-modal" id="modal-3">
     <div class="modal">
       <div class="modal-header">
         <div class="user-info">
@@ -201,10 +201,32 @@
             <span>Devop's</span>
           </div>
         </div>
-        <button data-control-modal="post-3">x</button>
+        <button data-close-modal="modal-3">x</button>
       </div>
       <div class="modal-description">
         <h2>Programa de estágio abre vagas em Segurança da Informação com regime remoto</h2>
+        <p>Provavelmente, você já ouviu falar do Next.js, considerado o framework mais popular do mercado. Com a
+          expansão do mercado de tecnologia e sua influência em serviços de diversos segmentos</p>
+        <p>Para tornar o carregamento de páginas mais rápido, o Next.js quebra o código automaticamente e é assim que
+          assegura uma capacidade de carregamento de página mais rápida, já que os sites são criados para suportar um
+          grande volume de acessos.</p>
+      </div>
+    </div>
+  </div>
+  <div class="container-modal" id="modal-4">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="user-info">
+          <img src="../../assets/img/user1.svg" alt="foto de perfil">
+          <div>
+            <h3>Samuel Leão</h3>
+            <span>Front end Engineer</span>
+          </div>
+        </div>
+        <button data-close-modal="modal-4">x</button>
+      </div>
+      <div class="modal-description">
+        <h2>Testando Novo Post</h2>
         <p>Provavelmente, você já ouviu falar do Next.js, considerado o framework mais popular do mercado. Com a
           expansão do mercado de tecnologia e sua influência em serviços de diversos segmentos</p>
         <p>Para tornar o carregamento de páginas mais rápido, o Next.js quebra o código automaticamente e é assim que
