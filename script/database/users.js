@@ -1,6 +1,9 @@
 //Usuários
 const users = [
   {
+
+  },
+  {
     id: 1,
     user: "Samuel Leão",
     stack: "Front end Engineer",
@@ -33,11 +36,7 @@ const users = [
   {
     id: 6,
     user: "Filipe Gutierry",
+    stack: "Devop's",
     img: "../../assets/img/user7.svg",
-  },
-  {
-    id: 7,
-    user: "Samuel Persuhn",
-    img: "../../assets/img/user6.svg",
-  },
+  }
 ];
