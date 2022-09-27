@@ -25,6 +25,7 @@
     flex-direction: column;
     gap: 32px;
     width: 720px;
+    position: relative;
 }
 
 .modal-header {
@@ -45,7 +46,9 @@
     color: var(--color-grey-3);
     font-size: 28px;
     height: 40px;
-    margin: 11px 15px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
     width: 40px;
 }
 
@@ -53,7 +56,7 @@
     background-color: var(--color-grey-5);
 }
 
-.modal-description{
+.modal-description {
     display: flex;
     flex-direction: column;
     gap: 24px;
@@ -67,12 +70,15 @@
         opacity: 0;
         transform: scale(0%);
     }
-    25%{
+
+    25% {
         rotate: 180deg;
     }
-    90%{
+
+    90% {
         background-color: rgba(0, 0, 0, 0);
     }
+
     100% {
         opacity: 1;
         transform: scale(100%);

@@ -1,21 +1,21 @@
 .container-main {
     display: flex;
-    margin: 140px auto;
-    max-width: 1200px;
-}
-
-.container-sections {
+    margin: 40px auto;
+    margin-top: 140px;
     width: 100%;
+    height: 100%;
+    flex-direction: column;
 }
 
-.container-up {
+.container-new {
+    height:min-content;
     display: flex;
-    width: 100%;
 }
 
 aside {
-    position: fixed;
-    transform: translateX(778px);
+    position: sticky;
+    transform: translateX(745px) translateY(-340px);
+    top: 480px;
     width: 420px;
 }
 
@@ -33,6 +33,7 @@ aside>h3 {
 .section-posts {
     min-width: 200px;
     width: 650px;
+    margin-top: -250px;
 }
 
 .section-posts>h2 {

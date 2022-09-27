@@ -28,6 +28,11 @@
     .section-form form textarea {
         width: 100%;
     }
+    .section-posts {
+        width: 100%;
+        min-width: 200px;
+        margin-top: 0px;
+    }
 
     .modal {
         width: 90%;
@@ -50,16 +55,9 @@
         justify-content: center;
     }
 
-    .container-sections {
-        display: flex;
+    .container-new{
+        position: static;
         flex-direction: column;
-        align-items: center;
-    }
-
-    .container-up {
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
     }
 
     .section-form {
@@ -112,6 +110,7 @@
     .section-posts {
         width: 100%;
         min-width: 200px;
+        margin-top: 0px;
     }
 
     .container-modal {
