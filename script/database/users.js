@@ -1,8 +1,5 @@
 //Usuários
-const users = [
-  {
-
-  },
+export const users = [
   {
     id: 1,
     user: "Samuel Leão",
@@ -38,5 +35,5 @@ const users = [
     user: "Filipe Gutierry",
     stack: "Devop's",
     img: "../../assets/img/user7.svg",
-  }
+  },
 ];
