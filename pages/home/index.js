@@ -1,12 +1,10 @@
 import { posts } from "../../script/database/posts.js";
+import { suggestUsers } from "../../script/database/sugestUsers.js";
 import { users } from "../../script/database/users.js";
 
-const buttonsControllersModal = document.querySelectorAll(
-  "[data-control-modal]"
-);
-
+const body = document.querySelector("body");
 const listPosts = document.querySelector(".list-posts");
-const count = [15, 35, 20];
+const listSuggestions = document.querySelector(".list-suggestions");
 
 const renderPosts = () => {
   listPosts.innerHTML = "";
@@ -30,9 +28,9 @@ const renderPosts = () => {
                 <h2>${title}</h2>
                 <p>${text}</p>
                 <div class="container-heart">
-                  <button data-control-modal="post-${id_post}">Abrir Post</button>
+                  <button data-control-modal="${id_post}">Abrir Post</button>
                   <img
-                    data-control-like="like-${id_post}"
+                    data-control-like="${id_post}"
                     src="../../assets/img/heart-pb.svg"
                     alt="coração"
                   />
@@ -43,37 +41,115 @@ const renderPosts = () => {
         `
     );
   });
+  const buttonsLike = document.querySelectorAll("[data-control-like]");
+
+  buttonsLike.forEach((button) => {
+    button.onclick = (event) => {
+      const liked = button.classList.toggle("like-pressed");
+      const id = button.getAttribute("data-control-like");
+
+      const findPost = posts.find((post) => post.id_post == id);
+
+      if (liked) {
+        findPost.likes += 1;
+        event.target.parentElement.children[2].innerText = findPost.likes;
+        event.target.src = "../../assets/img/heart.svg";
+      } else {
+        findPost.likes -= 1;
+        event.target.parentElement.children[2].innerText = findPost.likes;
+        event.target.src = "../../assets/img/heart-pb.svg";
+      }
+    };
+  });
 };
 renderPosts();
-const buttonsLike = document.querySelectorAll("[data-control-like]");
-const buttonsFollow = document.querySelectorAll("[data-control-follow]");
 
-for (let i = 0; i < buttonsControllersModal.length; i++) {
-  buttonsControllersModal[i].addEventListener("click", () => {
-    let modalId = buttonsControllersModal[i].getAttribute("data-control-modal");
-    document.getElementById(modalId).classList.toggle("show-modal");
+const renderSuggestions = () => {
+  listSuggestions.innerHTML = "";
+  suggestUsers.map((elem) => {
+    const findUser = users.find((user) => user.id == elem);
+    const { user, stack, img } = findUser;
+    listSuggestions.insertAdjacentHTML(
+      "beforeend",
+      `
+      <li>
+        <div class="user-info">
+          <img src="${img}" alt="foto de perfil" />
+          <div>
+            <h3>${user}</h3>
+            <span>${stack}</span>
+          </div>
+          <button data-control-follow="follow-1">Seguir</button>
+        </div>
+      </li>
+    `
+    );
   });
-}
 
-for (let i = 0; i < buttonsLike.length; i++) {
-  buttonsLike[i].onclick = (event) => {
-    const liked = buttonsLike[i].classList.toggle("like-pressed");
-    if (liked) {
-      count[i]++;
-      event.target.parentElement.children[2].innerText = count[i];
-      event.target.src = "../../assets/img/heart.svg";
-    } else {
-      count[i]--;
-      event.target.parentElement.children[2].innerText = count[i];
-      event.target.src = "../../assets/img/heart-pb.svg";
-    }
-  };
-}
+  const buttonsFollow = document.querySelectorAll("[data-control-follow]");
+  buttonsFollow.forEach((button) => {
+    button.onclick = () => {
+      const pressed = button.classList.toggle("btn-pressed");
+      if (pressed) button.innerText = "Seguindo";
+      else button.innerText = "Seguir";
+    };
+  });
+};
+renderSuggestions();
 
-for (let i = 0; i < buttonsFollow.length; i++) {
-  buttonsFollow[i].onclick = () => {
-    const pressed = buttonsFollow[i].classList.toggle("btn-pressed");
-    if (pressed) buttonsFollow[i].innerText = "Seguindo";
-    else buttonsFollow[i].innerText = "Seguir";
-  };
-}
+const createModal = (post) => {
+  console.log(post);
+  const { title, text } = post;
+  const findUser = users.find((elem) => elem.id == post.user);
+  const { user, stack, img } = findUser;
+  console.log(findUser);
+
+  const divContainer = document.createElement("div");
+  const divModal = document.createElement("div");
+  const divModalHeader = document.createElement("div");
+  const divUserInfo = document.createElement("div");
+  const imgProfile = document.createElement("img");
+  const divUser = document.createElement("div");
+  const h3User = document.createElement("h3");
+  const spanUser = document.createElement("span");
+  const btnClose = document.createElement("button");
+  const divModalDescription = document.createElement("div");
+  const h2Description = document.createElement("h2");
+  const pDescription = document.createElement("p");
+
+  divContainer.className = "container-modal";
+  divModal.className = "modal";
+  divModalHeader.className = "modal-header";
+  divUserInfo.className = "user-info";
+  imgProfile.src = img;
+  imgProfile.alt = "foto de perfil";
+  h3User.innerText = user;
+  spanUser.innerText = stack;
+  btnClose.innerText = "X";
+  btnClose.onclick = () => divContainer.remove();
+  divModalDescription.className = "modal-description";
+  h2Description.innerText = title;
+  pDescription.innerText = text;
+
+  body.appendChild(divContainer);
+  divContainer.appendChild(divModal);
+  divModal.append(divModalHeader, divModalDescription);
+  divModalHeader.append(divUserInfo, btnClose);
+  divUserInfo.append(imgProfile, divUser);
+  divUser.append(h3User, spanUser);
+  divModalDescription.append(h2Description, pDescription);
+};
+
+const openModal = () => {
+  const buttonsControllersModal = document.querySelectorAll(
+    "[data-control-modal]"
+  );
+  buttonsControllersModal.forEach((button) => {
+    button.addEventListener("click", () => {
+      const id = button.getAttribute("data-control-modal");
+      const findPost = posts.find((post) => post.id_post == id);
+      createModal(findPost);
+    });
+  });
+};
+openModal();

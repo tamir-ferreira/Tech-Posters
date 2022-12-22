@@ -1,2 +1,2 @@
 //ID dos usuários sugeridos para seguir
-export const sugestUsers = [3, 7, 6];
+export const suggestUsers = [3, 4, 6];
