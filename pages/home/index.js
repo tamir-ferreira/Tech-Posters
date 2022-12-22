@@ -6,6 +6,35 @@ const body = document.querySelector("body");
 const listPosts = document.querySelector(".list-posts");
 const listSuggestions = document.querySelector(".list-suggestions");
 
+const postSubmit = () => {
+  const form = document.querySelector("form");
+  const formData = [...form];
+
+  const newPost = {
+    id: posts.length + 1,
+    user: 1,
+    title: "",
+    text: "",
+    likes: 0,
+  };
+
+  form.onsubmit = (event) => {
+    event.preventDefault();
+
+    formData.forEach((elem) => {
+      if (elem.nodeName == "INPUT" || elem.nodeName == "TEXTAREA") {
+        // console.dir(elem);
+        newPost[elem.name] = elem.value;
+      }
+    });
+
+    posts.push(newPost);
+    renderPosts();
+    openModal();
+  };
+};
+postSubmit();
+
 const renderPosts = () => {
   listPosts.innerHTML = "";
   posts.map((post) => {
@@ -14,7 +43,7 @@ const renderPosts = () => {
     const { user, stack, img } = userFind;
 
     listPosts.insertAdjacentHTML(
-      "beforeend",
+      "afterbegin",
       `
         <li class="post">
               <article>
