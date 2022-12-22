@@ -29,6 +29,8 @@ const postSubmit = () => {
     });
 
     posts.push(newPost);
+
+    form.reset();
     renderPosts();
     openModal();
   };
