@@ -4,96 +4,8 @@ import { users } from "../../script/database/users.js";
 
 const body = document.querySelector("body");
 const listPosts = document.querySelector(".list-posts");
+const userInfo = document.querySelector(".user-info");
 const listSuggestions = document.querySelector(".list-suggestions");
-
-const postSubmit = () => {
-  const form = document.querySelector("form");
-  const formData = [...form];
-
-  const newPost = {
-    id: posts.length + 1,
-    user: 1,
-    title: "",
-    text: "",
-    likes: 0,
-  };
-
-  form.onsubmit = (event) => {
-    event.preventDefault();
-
-    formData.forEach((elem) => {
-      if (elem.nodeName == "INPUT" || elem.nodeName == "TEXTAREA") {
-        // console.dir(elem);
-        newPost[elem.name] = elem.value;
-      }
-    });
-
-    posts.push(newPost);
-
-    form.reset();
-    renderPosts();
-    openModal();
-  };
-};
-postSubmit();
-
-const renderPosts = () => {
-  listPosts.innerHTML = "";
-  posts.map((post) => {
-    const { id_post, title, text, likes } = post;
-    const userFind = users.find((elem) => elem.id == post.user);
-    const { user, stack, img } = userFind;
-
-    listPosts.insertAdjacentHTML(
-      "afterbegin",
-      `
-        <li class="post">
-              <article>
-                <div class="user-info">
-                  <img src="${img}" alt="foto de perfil" />
-                  <div>
-                    <h3>${user}</h3>
-                    <span>${stack}</span>
-                  </div>
-                </div>
-                <h2>${title}</h2>
-                <p>${text}</p>
-                <div class="container-heart">
-                  <button data-control-modal="${id_post}">Abrir Post</button>
-                  <img
-                    data-control-like="${id_post}"
-                    src="../../assets/img/heart-pb.svg"
-                    alt="coração"
-                  />
-                  <span>${likes} </span>
-                </div>
-              </article>
-            </li>
-        `
-    );
-  });
-  const buttonsLike = document.querySelectorAll("[data-control-like]");
-
-  buttonsLike.forEach((button) => {
-    button.onclick = (event) => {
-      const liked = button.classList.toggle("like-pressed");
-      const id = button.getAttribute("data-control-like");
-
-      const findPost = posts.find((post) => post.id_post == id);
-
-      if (liked) {
-        findPost.likes += 1;
-        event.target.parentElement.children[2].innerText = findPost.likes;
-        event.target.src = "../../assets/img/heart.svg";
-      } else {
-        findPost.likes -= 1;
-        event.target.parentElement.children[2].innerText = findPost.likes;
-        event.target.src = "../../assets/img/heart-pb.svg";
-      }
-    };
-  });
-};
-renderPosts();
 
 const renderSuggestions = () => {
   listSuggestions.innerHTML = "";
@@ -126,7 +38,133 @@ const renderSuggestions = () => {
     };
   });
 };
-renderSuggestions();
+
+const handleLike = () => {
+  const buttonsLike = document.querySelectorAll("[data-control-like]");
+  // console.log(buttonsLike);
+
+  buttonsLike.forEach((button) => {
+    button.onclick = (event) => {
+      const liked = button.classList.toggle("like-pressed");
+      const id = button.getAttribute("data-control-like");
+      console.log(id);
+
+      const findPost = posts.find((post) => post.id_post == id);
+
+      if (liked) {
+        findPost.likes += 1;
+        event.target.parentElement.children[2].innerText = findPost.likes;
+        event.target.src = "../../assets/img/heart.svg";
+      } else {
+        findPost.likes -= 1;
+        event.target.parentElement.children[2].innerText = findPost.likes;
+        event.target.src = "../../assets/img/heart-pb.svg";
+      }
+    };
+  });
+  renderSuggestions();
+};
+
+const openModal = () => {
+  const buttonsControllersModal = document.querySelectorAll(
+    "[data-control-modal]"
+  );
+  buttonsControllersModal.forEach((button) => {
+    button.addEventListener("click", () => {
+      const id = button.getAttribute("data-control-modal");
+      const findPost = posts.find((post) => post.id_post == id);
+      createModal(findPost);
+    });
+  });
+  handleLike();
+};
+
+const postSubmit = () => {
+  const form = document.querySelector("form");
+  const formData = [...form];
+
+  const newPost = {
+    id_post: posts.length + 1,
+    user: 1,
+    title: "",
+    text: "",
+    likes: 0,
+  };
+
+  console.log(newPost);
+
+  form.onsubmit = (event) => {
+    event.preventDefault();
+
+    formData.forEach((elem) => {
+      if (elem.nodeName == "INPUT" || elem.nodeName == "TEXTAREA") {
+        // console.dir(elem);
+        newPost[elem.name] = elem.value;
+      }
+    });
+
+    posts.push(newPost);
+
+    form.reset();
+    renderPosts();
+    handleLike();
+  };
+};
+postSubmit();
+
+const renderPosts = () => {
+  listPosts.innerHTML = "";
+  posts.map((post) => {
+    const { id_post, title, text, likes } = post;
+    const userFind = users.find((elem) => elem.id == post.user);
+    const { user, stack, img } = userFind;
+    console.log(id_post);
+
+    listPosts.insertAdjacentHTML(
+      "afterbegin",
+      `
+        <li class="post">
+          <article>
+            <div class="user-info">
+              <img src="${img}" alt="foto de perfil" />
+              <div>
+                <h3>${user}</h3>
+                <span>${stack}</span>
+              </div>
+            </div>
+            <h2>${title}</h2>
+            <p>${text}</p>
+            <div class="container-heart">
+              <button data-control-modal="${id_post}">Abrir Post</button>
+              <img
+                data-control-like="${id_post}"
+                src="../../assets/img/heart-pb.svg"
+                alt="coração"
+              />
+              <span>${likes} </span>
+            </div>
+          </article>
+        </li>
+        `
+    );
+  });
+  openModal();
+};
+
+const renderOwnerCard = () => {
+  userInfo.insertAdjacentHTML(
+    "afterbegin",
+    `
+    <img src="${users[0].img}" alt="foto de perfil" />
+    <div>
+      <h3>${users[0].user}</h3>
+      <span>${users[0].stack}</span>
+    </div>
+  `
+  );
+  renderPosts();
+};
+renderOwnerCard();
 
 const createModal = (post) => {
   console.log(post);
@@ -170,17 +208,3 @@ const createModal = (post) => {
   divUser.append(h3User, spanUser);
   divModalDescription.append(h2Description, pDescription);
 };
-
-const openModal = () => {
-  const buttonsControllersModal = document.querySelectorAll(
-    "[data-control-modal]"
-  );
-  buttonsControllersModal.forEach((button) => {
-    button.addEventListener("click", () => {
-      const id = button.getAttribute("data-control-modal");
-      const findPost = posts.find((post) => post.id_post == id);
-      createModal(findPost);
-    });
-  });
-};
-openModal();

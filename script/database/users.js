@@ -2,9 +2,9 @@
 export const users = [
   {
     id: 1,
-    user: "Samuel Leão",
-    stack: "Front end Engineer",
-    img: "../../assets/img/user1.svg",
+    user: "Tamir S. Ferreira",
+    stack: "Full Stack Student",
+    img: "https://avatars.githubusercontent.com/u/79228431?v=4",
   },
   {
     id: 2,
