@@ -9,6 +9,7 @@ const listSuggestions = document.querySelector(".list-suggestions");
 
 const renderSuggestions = () => {
   listSuggestions.innerHTML = "";
+
   suggestUsers.map((elem) => {
     const findUser = users.find((user) => user.id == elem);
     const { user, stack, img } = findUser;
@@ -41,7 +42,6 @@ const renderSuggestions = () => {
 
 const handleLike = () => {
   const buttonsLike = document.querySelectorAll("[data-control-like]");
-  // console.log(buttonsLike);
 
   buttonsLike.forEach((button) => {
     button.onclick = (event) => {
@@ -91,14 +91,11 @@ const postSubmit = () => {
     likes: 0,
   };
 
-  console.log(newPost);
-
   form.onsubmit = (event) => {
     event.preventDefault();
 
     formData.forEach((elem) => {
       if (elem.nodeName == "INPUT" || elem.nodeName == "TEXTAREA") {
-        // console.dir(elem);
         newPost[elem.name] = elem.value;
       }
     });
@@ -118,7 +115,6 @@ const renderPosts = () => {
     const { id_post, title, text, likes } = post;
     const userFind = users.find((elem) => elem.id == post.user);
     const { user, stack, img } = userFind;
-    console.log(id_post);
 
     listPosts.insertAdjacentHTML(
       "afterbegin",
@@ -167,11 +163,9 @@ const renderOwnerCard = () => {
 renderOwnerCard();
 
 const createModal = (post) => {
-  console.log(post);
   const { title, text } = post;
   const findUser = users.find((elem) => elem.id == post.user);
   const { user, stack, img } = findUser;
-  console.log(findUser);
 
   const divContainer = document.createElement("div");
   const divModal = document.createElement("div");
