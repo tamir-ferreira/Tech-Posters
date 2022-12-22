@@ -8,8 +8,6 @@ const userInfo = document.querySelector(".user-info");
 const listSuggestions = document.querySelector(".list-suggestions");
 
 const renderSuggestions = () => {
-  listSuggestions.innerHTML = "";
-
   suggestUsers.map((elem) => {
     const findUser = users.find((user) => user.id == elem);
     const { user, stack, img } = findUser;
@@ -39,30 +37,30 @@ const renderSuggestions = () => {
     };
   });
 };
+renderSuggestions();
 
 const handleLike = () => {
   const buttonsLike = document.querySelectorAll("[data-control-like]");
 
   buttonsLike.forEach((button) => {
     button.onclick = (event) => {
-      const liked = button.classList.toggle("like-pressed");
       const id = button.getAttribute("data-control-like");
-      console.log(id);
-
       const findPost = posts.find((post) => post.id_post == id);
 
-      if (liked) {
+      if (!findPost.liked) {
         findPost.likes += 1;
         event.target.parentElement.children[2].innerText = findPost.likes;
         event.target.src = "../../assets/img/heart.svg";
+        findPost.liked = true;
       } else {
         findPost.likes -= 1;
         event.target.parentElement.children[2].innerText = findPost.likes;
         event.target.src = "../../assets/img/heart-pb.svg";
+        findPost.liked = false;
       }
+      event.target.classList.toggle("like-pressed");
     };
   });
-  renderSuggestions();
 };
 
 const openModal = () => {
@@ -83,16 +81,17 @@ const postSubmit = () => {
   const form = document.querySelector("form");
   const formData = [...form];
 
-  const newPost = {
-    id_post: posts.length + 1,
-    user: 1,
-    title: "",
-    text: "",
-    likes: 0,
-  };
-
   form.onsubmit = (event) => {
     event.preventDefault();
+
+    const newPost = {
+      id_post: posts.length + 1,
+      user: 1,
+      title: "",
+      text: "",
+      likes: 0,
+      liked: false,
+    };
 
     formData.forEach((elem) => {
       if (elem.nodeName == "INPUT" || elem.nodeName == "TEXTAREA") {
@@ -111,8 +110,9 @@ postSubmit();
 
 const renderPosts = () => {
   listPosts.innerHTML = "";
+  console.log(posts, posts.length);
   posts.map((post) => {
-    const { id_post, title, text, likes } = post;
+    const { id_post, title, text, likes, liked } = post;
     const userFind = users.find((elem) => elem.id == post.user);
     const { user, stack, img } = userFind;
 
@@ -134,7 +134,11 @@ const renderPosts = () => {
               <button data-control-modal="${id_post}">Abrir Post</button>
               <img
                 data-control-like="${id_post}"
-                src="../../assets/img/heart-pb.svg"
+                src="${
+                  liked
+                    ? "../../assets/img/heart.svg"
+                    : "../../assets/img/heart-pb.svg"
+                }"
                 alt="coração"
               />
               <span>${likes} </span>
