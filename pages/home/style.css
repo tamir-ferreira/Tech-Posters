@@ -52,6 +52,16 @@ aside > h3 {
   gap: 25px;
 }
 
+.post article p {
+  height: 80px;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  max-height: 4.5em;
+  line-height: 1.5em;
+}
+
 .post .container-heart {
   align-items: center;
   display: flex;
